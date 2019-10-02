@@ -4,10 +4,9 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
+const checkJWT = require('./middlewares/check-jwt');
 
 const app = express();
-
-const checkJWT = require('./middlewares/check-jwt');
 
 require('dotenv').config();
 
@@ -18,7 +17,13 @@ const authRoutes = require('./routes/auth');
 const teacherRoutes = require('./routes/teacher');
 
 // API Subject
-const subjectRoutes = require('./routes/subject')
+const subjectRoutes = require('./routes/subject');
+
+// API student
+const studentRoutes = require('./routes/student');
+
+// API academy
+const academyRoutes = require('./routes/academy');
 
 // Connect database
 mongoose.connect(
@@ -57,10 +62,10 @@ app.use(
 
 // Set up routes
 app.use('/auth', authRoutes);
-
+app.use('/student', checkJWT, studentRoutes);
+app.use('/academy', checkJWT, academyRoutes);
 app.use('/teacher', checkJWT, teacherRoutes);
-
-app.use('/subject', subjectRoutes);
+app.use('/subject', checkJWT, subjectRoutes);
 
 app.get('/', (req, res, next) => {
   res.json({ title: 'Hello' });

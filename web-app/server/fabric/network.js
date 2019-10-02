@@ -70,6 +70,9 @@ exports.query = async function(networkObj, func, args) {
   try {
     if (Array.isArray(args)) {
       let response = await networkObj.contract.evaluateTransaction(func, ...args);
+
+      await networkObj.gateway.disconnect();
+      return response;
     } else if (args) {
       let response = await networkObj.contract.evaluateTransaction(func, args);
 

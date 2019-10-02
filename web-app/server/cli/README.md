@@ -94,3 +94,7 @@ Query Score with role admin student with studentId and subjectId
 ```bash
 	node invoke.js --userid=admin --func=CreateCertificate --studentid=1
 ```
+
+```bash
+node invoke.js --userid=admin --orgid=student --func=CreateStudent --studentid=1 --studentname=cong
+```
