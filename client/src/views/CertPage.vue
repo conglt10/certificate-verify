@@ -115,7 +115,6 @@ export default {
       response.data.msg.issueDate = dd + "/" + mm + "/" + yyyy;
 
       this.cert = response.data.msg;
-      console.log();
     } else {
       this.msg = response.data.msg;
     }

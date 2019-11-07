@@ -14,7 +14,6 @@ const actions = {
       let listSubjects = await studentService.getAllSubjects(username);
       commit('getAllSubjects', listSubjects);
     } catch (error) {
-      console.log(error);
       if (error.response.status === 403) {
         router.push('/403');
       }
@@ -26,7 +25,6 @@ const actions = {
       commit('registerSubject', listSubjects);
       location.reload(true);
     } catch (error) {
-      console.log(error);
       if (error.response.status === 403) {
         router.push('/403');
       }
@@ -37,7 +35,6 @@ const actions = {
       let mySubjects = await studentService.getMySubjects();
       commit('getMySubjects', mySubjects);
     } catch (error) {
-      console.log(error);
       if (error.response.status === 403) {
         router.push('/403');
       }
@@ -48,7 +45,6 @@ const actions = {
       let myCertificates = await studentService.getMyCertificates();
       commit('getMyCertificates', myCertificates);
     } catch (error) {
-      console.log(error);
       if (error.response.status === 403) {
         router.push('/403');
       }

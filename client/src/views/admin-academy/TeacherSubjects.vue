@@ -117,7 +117,6 @@ export default {
     handleAddSubject() {
       let username = this.$route.params.id;
       let newSubjectId = this.newSubjectId;
-      console.log(username, newSubjectId);
       this.addSubjectOfTeacher({ username, subjectId: newSubjectId });
       this.newSubjectId = null;
     },

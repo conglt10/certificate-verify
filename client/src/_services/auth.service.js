@@ -66,9 +66,6 @@ async function handleResponse(response) {
       } else {
         reject(data.msg);
       }
-      if (errors) {
-        reject(errors);
-      }
     } else if (response.status === 401) {
       logout();
       location.reload(true);
